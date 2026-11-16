@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Búscate · Fotos de la sesión 3Peso</title>
+<meta name="description" content="Toca tu cara y baja tus fotos de la sesión de 3Peso en calidad completa.">
+<meta property="og:title" content="Búscate · Fotos de la sesión 3Peso">
+<meta property="og:description" content="Toca tu cara y baja tus fotos en calidad completa.">
+<meta property="og:image" content="https://fotos-sesion-3peso.vercel.app/web/3Peso_4258.jpg">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#E9EEF0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=IBM+Plex+Mono:wght@500&family=Instrument+Sans:wght@400;600&family=Permanent+Marker&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --mesa: #E9EEF0;        /* mesa de luz */
+    --mesa-luz: #F7FAFB;
+    --mesa-borde: #D4DCDF;
+    --pelicula: #141210;    /* base de la película */
+    --ambar: #F0A43A;       /* números impresos en el borde */
+    --lapiz: #F2392C;       /* lápiz graso rojo */
+    --boton: #D92E24;
+    --tinta: #16191B;
+    --gris: #59656A;
+    --alto: 300px;
+    --display: "Big Shoulders Display", Impact, "Arial Narrow", sans-serif;
+    --cuerpo: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+    --marcador: "Permanent Marker", "Marker Felt", "Comic Sans MS", cursive;
+  }
+  @media (min-width: 760px) { :root { --alto: 400px; } }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; color: var(--tinta); font: 16px/1.5 var(--cuerpo);
+    background: var(--mesa);
+    background-image: radial-gradient(130% 70% at 50% 0%, var(--mesa-luz) 0%, var(--mesa) 50%, var(--mesa-borde) 100%);
+    background-repeat: no-repeat; min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 16px; }
+  :focus-visible { outline: 3px solid var(--ambar); outline-offset: 3px; }
+  .mono { font: 500 12px/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--gris); }
+
+  /* ---------- Portada ---------- */
+  .portada { padding: 28px 0 12px; }
+  .marca { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .marca img { height: 34px; width: auto; display: block; }
+  .titulo { position: relative; display: inline-block; margin: 34px 0 6px; }
+  h1 {
+    margin: 0; font: 900 clamp(92px, 27vw, 230px)/.8 var(--display);
+    text-transform: uppercase; letter-spacing: -.005em; padding: 0 .08em;
+  }
+  .titulo svg { position: absolute; inset: -14% -7% -18% -6%; width: 113%; height: 132%; pointer-events: none; overflow: visible; }
+  .intro { font-size: 18px; max-width: 34ch; margin: 18px 0 22px; }
+  .caras { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px 10px; grid-template-columns: repeat(auto-fill, minmax(58px, 1fr)); max-width: 760px; }
+  .caras a {
+    display: block; aspect-ratio: 1; border-radius: 50%; overflow: hidden; background: #cfd6d9;
+    box-shadow: 0 0 0 3px var(--mesa-luz), 0 6px 14px rgba(22,25,27,.18);
+    transition: transform .18s ease, box-shadow .18s ease;
+  }
+  .caras a:hover, .caras a:focus-visible { transform: scale(1.08); box-shadow: 0 0 0 3px var(--lapiz), 0 8px 18px rgba(22,25,27,.25); }
+  .caras img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .atajos { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 0; }
+  .atajos a {
+    font: 600 14px/1 var(--cuerpo); color: var(--tinta); text-decoration: none;
+    border: 1.5px solid var(--tinta); border-radius: 999px; padding: 10px 14px;
+  }
+  .atajos a span { font: 500 12px var(--mono); color: var(--gris); margin-left: 6px; }
+  .tip { margin: 20px 0 0; font-size: 14px; color: var(--gris); max-width: 52ch; }
+  .tip b { color: var(--tinta); }
+
+  /* ---------- Encabezados de sección ---------- */
+  .seccion { padding-top: 46px; }
+  .seccion-tit { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; border-bottom: 2px solid var(--tinta); padding-bottom: 6px; margin-bottom: 8px; }
+  h2.grande { margin: 0; font: 900 clamp(40px, 11vw, 72px)/.9 var(--display); text-transform: uppercase; }
+
+  /* ---------- Tiras de película (una por persona) ---------- */
+  .tira { padding-top: 26px; scroll-margin-top: 12px; }
+  .rotulo { display: flex; align-items: flex-end; justify-content: space-between; gap: 10px; margin-bottom: 8px; }
+  .rotulo h3 {
+    margin: 0; font: 400 clamp(22px, 5.6vw, 30px)/1.05 var(--marcador); color: var(--tinta);
+    transform: rotate(-1.2deg); transform-origin: left bottom;
+  }
+  .rotulo .mono { white-space: nowrap; }
+  .desliza { display: none; color: var(--lapiz); }
+  .tira.larga .desliza { display: inline; }
+  .pelicula {
+    overflow-x: auto; overflow-y: hidden; scroll-snap-type: x proximity; overscroll-behavior-x: contain;
+    scrollbar-width: none; -webkit-overflow-scrolling: touch;
+    box-shadow: 0 10px 24px rgba(22,25,27,.22);
+  }
+  .pelicula::-webkit-scrollbar { display: none; }
+  .pista {
+    display: flex; align-items: center; gap: 14px; width: max-content; min-width: 100%;
+    padding: 34px 16px 30px;
+    background-color: var(--pelicula);
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='12'%3E%3Crect x='6' y='1' width='10' height='10' rx='2.2' fill='%23E9EEF0'/%3E%3C/svg%3E"),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='12'%3E%3Crect x='6' y='1' width='10' height='10' rx='2.2' fill='%23E9EEF0'/%3E%3C/svg%3E");
+    background-repeat: repeat-x; background-size: 22px 12px;
+    background-position: 0 8px, 0 calc(100% - 8px);
+  }
+  .lider { flex: none; align-self: stretch; display: flex; align-items: center; }
+  .lider span { writing-mode: vertical-rl; transform: rotate(180deg); font: 500 11px var(--mono); letter-spacing: .2em; color: var(--ambar); opacity: .85; }
+
+  .cuadro { margin: 0; position: relative; scroll-snap-align: center; flex: none; }
+  .cuadro .foto { display: block; padding: 0; border: 0; background: #000; cursor: zoom-in; line-height: 0; }
+  .cuadro img {
+    display: block; width: auto; aspect-ratio: var(--r);
+    height: min(var(--alto), calc(82vw / var(--r)));
+    background: #222;
+  }
+  .cuadro figcaption { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 8px; }
+  .num { font: 500 12px var(--mono); color: var(--ambar); letter-spacing: .06em; }
+  .bajar {
+    font: 600 14px/1 var(--cuerpo); color: #fff; background: var(--boton); text-decoration: none;
+    border-radius: 8px; padding: 0 12px; min-height: 36px; display: inline-flex; align-items: center; gap: 6px;
+  }
+  .bajar[aria-busy="true"] { opacity: .75; }
+
+  /* Lápiz rojo: círculo dibujado a mano */
+  .circulo { position: absolute; pointer-events: none; overflow: visible; }
+  .circulo path { fill: none; stroke: var(--lapiz); stroke-width: 4.5; stroke-linecap: round; stroke-linejoin: round;
+    stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.1s cubic-bezier(.6,.05,.3,1); }
+  .visto .circulo path, .titulo.visto .circulo path { stroke-dashoffset: 0; }
+  .cuadro .circulo { top: -10px; left: -9px; width: calc(100% + 18px); height: calc(100% - 24px); }
+  .nota {
+    position: absolute; top: -31px; left: 2px; font: 400 17px/1 var(--marcador); color: var(--lapiz);
+    transform: rotate(-5deg); white-space: nowrap; opacity: 0; transition: opacity .3s .8s;
+  }
+  .visto .nota { opacity: 1; }
+
+  /* ---------- Hoja de contactos (grupo y detrás de cámara) ---------- */
+  .hoja-contacto {
+    background: var(--pelicula); padding: 20px 14px 18px; margin-top: 16px;
+    display: grid; gap: 18px 10px; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    box-shadow: 0 10px 24px rgba(22,25,27,.22);
+  }
+  .hoja-contacto .cuadro .foto { width: 100%; aspect-ratio: 4 / 5; background: #000; }
+  .hoja-contacto .cuadro img { width: 100%; height: 100%; aspect-ratio: auto; object-fit: contain; background: transparent; }
+  .hoja-contacto .bajar { padding: 0 10px; font-size: 13px; }
+
+  footer { padding: 56px 0 64px; font-size: 14px; color: var(--gris); }
+  footer p { margin: 0 0 6px; max-width: 60ch; }
+
+  /* ---------- Lupa (foto en grande) ---------- */
+  dialog#lupa { width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: #0b0b0a; color: #f3f3f2; }
+  dialog#lupa::backdrop { background: #0b0b0a; }
+  .l-cuerpo { position: absolute; inset: 0; display: flex; flex-direction: column; }
+  .l-arriba { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: calc(10px + env(safe-area-inset-top)) 12px 10px; }
+  .l-arriba .num { font-size: 13px; }
+  .l-arriba .quien { font: 400 18px/1.1 var(--marcador); color: #f3f3f2; }
+  .l-cerrar { flex: none; width: 44px; height: 44px; border-radius: 50%; border: 1px solid #3a3a38; background: #1b1b1a; color: #fff; font-size: 20px; cursor: pointer; }
+  .l-img { flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; padding: 6px 8px; }
+  .l-img img { max-width: 100%; max-height: 100%; object-fit: contain; -webkit-touch-callout: default; }
+  .l-abajo { display: flex; gap: 8px; align-items: stretch; padding: 10px 12px calc(12px + env(safe-area-inset-bottom)); }
+  .l-abajo .flecha { flex: none; width: 48px; border-radius: 10px; border: 1px solid #3a3a38; background: #1b1b1a; color: #fff; font-size: 22px; cursor: pointer; }
+  .l-abajo .bajar { flex: 1; justify-content: center; min-height: 48px; font-size: 16px; }
+  .l-abajo .guardar { background: #f3f3f2; color: var(--tinta); }
+  .l-estado { text-align: center; font: 500 12px var(--mono); color: #9a9a96; padding: 0 12px 4px; min-height: 18px; }
+
+  @media (max-width: 420px) {
+    .l-abajo .bajar { font-size: 15px; padding: 0 8px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .circulo path { transition: none; stroke-dashoffset: 0; }
+    .nota { transition: none; opacity: 1; }
+    .caras a { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="portada">
+  <div class="wrap">
+    <div class="marca">
+      <img src="logo.png" alt="3Peso" width="66" height="34">
+      <span class="mono" id="conteo"></span>
+    </div>
+    <div class="titulo" id="titulo">
+      <h1>Búscate</h1>
+      <svg class="circulo" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+        <path pathLength="1" vector-effect="non-scaling-stroke" d="M70 6 C40 0 8 10 4 46 C1 80 30 98 55 96 C84 94 99 74 97 44 C95 16 70 4 36 9"/>
+      </svg>
+    </div>
+    <p class="intro">Toca tu cara y te llevamos a tus fotos. Bájalas en calidad completa, tal cual salieron de la cámara.</p>
+    <ul class="caras" id="caras"></ul>
+    <nav class="atajos" id="atajos" aria-label="Otras fotos"></nav>
+    <p class="tip"><b>En iPhone:</b> toca la foto y luego «Guardar en Fotos». <b>En Android:</b> toca «Descargar».</p>
+  </div>
+</header>
+
+<main id="main"></main>
+
+<footer class="wrap">
+  <p>Fotos de la sesión de 3Peso.</p>
+  <p>Cada foto pesa entre 1 y 3 MB. Con datos móviles puede tardar unos segundos en bajar.</p>
+</footer>
+
+<dialog id="lupa" aria-label="Foto en grande">
+  <div class="l-cuerpo">
+    <div class="l-arriba">
+      <div><div class="num" id="lNum"></div><div class="quien" id="lQuien"></div></div>
+      <button class="l-cerrar" id="lCerrar" aria-label="Cerrar">✕</button>
+    </div>
+    <div class="l-img"><img id="lImg" alt=""></div>
+    <div class="l-estado" id="lEstado" aria-live="polite"></div>
+    <div class="l-abajo">
+      <button class="flecha" id="lAntes" aria-label="Foto anterior">‹</button>
+      <button class="bajar guardar" id="lGuardar" hidden>Guardar en Fotos</button>
+      <a class="bajar" id="lBajar" download>Descargar</a>
+      <button class="flecha" id="lDespues" aria-label="Foto siguiente">›</button>
+    </div>
+  </div>
+</dialog>
+
+<script>
+const DATOS = {"personas": [{"label": "Polo Red Bull", "cara": "cara_00.jpg", "cara_de": "4119", "fotos": [{"n": "4119", "f": "3Peso_4119.jpg", "w": 933, "h": 1400, "mb": 1.7}, {"n": "4118", "f": "3Peso_4118.jpg", "w": 933, "h": 1400, "mb": 1.6}, {"n": "4116", "f": "3Peso_4116.jpg", "w": 933, "h": 1400, "mb": 1.5}, {"n": "4117", "f": "3Peso_4117.jpg", "w": 933, "h": 1400, "mb": 1.7}, {"n": "4100", "f": "3Peso_4100.jpg", "w": 933, "h": 1400, "mb": 2.3}, {"n": "4099", "f": "3Peso_4099.jpg", "w": 933, "h": 1400, "mb": 2.5}, {"n": "4101", "f": "3Peso_4101.jpg", "w": 933, "h": 1400, "mb": 2.3}, {"n": "4067", "f": "3Peso_4067.jpg", "w": 933, "h": 1400, "mb": 2.3}, {"n": "4064", "f": "3Peso_4064.jpg", "w": 933, "h": 1400, "mb": 2.5}, {"n": "4065", "f": "3Peso_4065.jpg", "w": 933, "h": 1400, "mb": 2.5}]}, {"label": "Camiseta Visa", "cara": "cara_01.jpg", "cara_de": "4121", "fotos": [{"n": "4121", "f": "3Peso_4121.jpg", "w": 933, "h": 1400, "mb": 1.8}, {"n": "4120", "f": "3Peso_4120.jpg", "w": 933, "h": 1400, "mb": 1.8}]}, {"label": "Camiseta negra y tatuajes", "cara": "cara_02.jpg", "cara_de": "4157", "fotos": [{"n": "4157", "f": "3Peso_4157.jpg", "w": 933, "h": 1400, "mb": 2.3}, {"n": "4159", "f": "3Peso_4159.jpg", "w": 933, "h": 1400, "mb": 2.4}, {"n": "4160", "f": "3Peso_4160.jpg", "w": 933, "h": 1400, "mb": 2.3}, {"n": "4158", "f": "3Peso_4158.jpg", "w": 933, "h": 1400, "mb": 2.2}, {"n": "4161", "f": "3Peso_4161.jpg", "w": 933, "h": 1400, "mb": 2.1}, {"n": "4162", "f": "3Peso_4162.jpg", "w": 933, "h": 1400, "mb": 2.4}, {"n": "4163", "f": "3Peso_4163.jpg", "w": 933, "h": 1400, "mb": 2.2}, {"n": "4122", "f": "3Peso_4122.jpg", "w": 933, "h": 1400, "mb": 1.6}, {"n": "4123", "f": "3Peso_4123.jpg", "w": 933, "h": 1400, "mb": 1.5}, {"n": "4124", "f": "3Peso_4124.jpg", "w": 933, "h": 1400, "mb": 1.5}, {"n": "4125", "f": "3Peso_4125.jpg", "w": 933, "h": 1400, "mb": 1.6}, {"n": "4075", "f": "3Peso_4075.jpg", "w": 933, "h": 1400, "mb": 2.6}, {"n": "4076", "f": "3Peso_4076.jpg", "w": 933, "h": 1400, "mb": 2.4}, {"n": "4077", "f": "3Peso_4077.jpg", "w": 933, "h": 1400, "mb": 2.5}, {"n": "4152", "f": "3Peso_4152.jpg", "w": 933, "h": 1400, "mb": 2.0}, {"n": "4154", "f": "3Peso_4154.jpg", "w": 933, "h": 1400, "mb": 2.1}, {"n": "4155", "f": "3Peso_4155.jpg", "w": 933, "h": 1400, "mb": 2.1}]}, {"label": "Enterizo rojo a rayas", "cara": "cara_03.jpg", "cara_de": "4126", "fotos": [{"n": "4126", "f": "3Peso_4126.jpg", "w": 933, "h": 1400, "mb": 1.8}, {"n": "4127", "f": "3Peso_4127.jpg", "w": 933, "h": 1400, "mb": 1.7}, {"n": "4128", "f": "3Peso_4128.jpg", "w": 933, "h": 1400, "mb": 1.8}, {"n": "4184", "f": "3Peso_4184.jpg", "w": 933, "h": 1400, "mb": 2.0}, {"n": "4186", "f": "3Peso_4186.jpg", "w": 933, "h": 1400, "mb": 2.0}, {"n": "4187", "f": "3Peso_4187.jpg", "w": 933, "h": 1400, "mb": 2.0}, {"n": "4189", "f": "3Peso_4189.jpg", "w": 933, "h": 1400, "mb": 2.1}, {"n": "4190", "f": "3Peso_4190.jpg", "w": 933, "h": 1400, "mb": 2.1}, {"n": "4194", "f": "3Peso_4194.jpg", "w": 933, "h": 1400, "mb": 1.9}, {"n": "4196", "f": "3Peso_4196.jpg", "w": 933, "h": 1400, "mb": 1.9}, {"n": "4198", "f": "3Peso_4198.jpg", "w": 933, "h": 1400, "mb": 1.9}, {"n": "4200", "f": "3Peso_4200.jpg", "w": 933, "h": 1400, "mb": 1.9}]}, {"label": "Top amarillo", "cara": "cara_04.jpg", "cara_de": "4130", "fotos": [{"n": "4130", "f": "3Peso_4130.jpg", "w": 933, "h": 1400, "mb": 1.9}, {"n": "4129", "f": "3Peso_4129.jpg", "w": 933, "h": 1400, "mb": 1.7}, {"n": "4149", "f": "3Peso_4149.jpg", "w": 933, "h": 1400, "mb": 2.3}]}, {"label": "Gorra y pulgares arriba", "cara": "cara_05.jpg", "cara_de": "4132", "fotos": [{"n": "4132", "f": "3Peso_4132.jpg", "w": 933, "h": 1400, "mb": 1.5}, {"n": "4131", "f": "3Peso_4131.jpg", "w": 933, "h": 1400, "mb": 1.5}]}, {"label": "Camisa azul marino", "cara": "cara_06.jpg", "cara_de": "4134", "fotos": [{"n": "4134", "f": "3Peso_4134.jpg", "w": 933, "h": 1400, "mb": 1.6}, {"n": "4133", "f": "3Peso_4133.jpg", "w": 933, "h": 1400, "mb": 1.5}]}, {"label": "Polo negro", "cara": "cara_07.jpg", "cara_de": "4136", "fotos": [{"n": "4136", "f": "3Peso_4136.jpg", "w": 933, "h": 1400, "mb": 1.5}, {"n": "4135", "f": "3Peso_4135.jpg", "w": 933, "h": 1400, "mb": 1.5}, {"n": "4137", "f": "3Peso_4137.jpg", "w": 933, "h": 1400, "mb": 1.5}]}, {"label": "Polo blanco y gorra", "cara": "cara_08.jpg", "cara_de": "4142", "fotos": [{"n": "4142", "f": "3Peso_4142.jpg", "w": 933, "h": 1400, "mb": 2.4}, {"n": "4139", "f": "3Peso_4139.jpg", "w": 1400, "h": 933, "mb": 2.6}, {"n": "4281", "f": "3Peso_4281.jpg", "w": 933, "h": 1400, "mb": 2.2}, {"n": "4138", "f": "3Peso_4138.jpg", "w": 1400, "h": 933, "mb": 2.3}, {"n": "4141", "f": "3Peso_4141.jpg", "w": 933, "h": 1400, "mb": 2.3}, {"n": "4143", "f": "3Peso_4143.jpg", "w": 933, "h": 1400, "mb": 2.4}, {"n": "4282", "f": "3Peso_4282.jpg", "w": 933, "h": 1400, "mb": 2.4}, {"n": "4085", "f": "3Peso_4085.jpg", "w": 933, "h": 1400, "mb": 2.4}, {"n": "4087", "f": "3Peso_4087.jpg", "w": 933, "h": 1400, "mb": 2.6}, {"n": "4088", "f": "3Peso_4088.jpg", "w": 933, "h": 1400, "mb": 2.6}, {"n": "4091", "f": "3Peso_4091.jpg", "w": 933, "h": 1400, "mb": 2.1}, {"n": "4093", "f": "3Peso_4093.jpg", "w": 933, "h": 1400, "mb": 2.3}]}, {"label": "Blusa verde", "cara": "cara_09.jpg", "cara_de": "4140", "fotos": [{"n": "4140", "f": "3Peso_4140.jpg", "w": 1400, "h": 933, "mb": 2.2}, {"n": "4144", "f": "3Peso_4144.jpg", "w": 933, "h": 1400, "mb": 2.2}]}, {"label": "Gorra VHS", "cara": "cara_10.jpg", "cara_de": "4151", "fotos": [{"n": "4151", "f": "3Peso_4151.jpg", "w": 933, "h": 1400, "mb": 2.5}]}, {"label": "Corset y falda blanca", "cara": "cara_11.jpg", "cara_de": "4164", "fotos": [{"n": "4164", "f": "3Peso_4164.jpg", "w": 933, "h": 1400, "mb": 1.5}, {"n": "4170", "f": "3Peso_4170.jpg", "w": 933, "h": 1400, "mb": 2.0}, {"n": "4182", "f": "3Peso_4182.jpg", "w": 933, "h": 1400, "mb": 1.7}, {"n": "4165", "f": "3Peso_4165.jpg", "w": 933, "h": 1400, "mb": 1.5}, {"n": "4167", "f": "3Peso_4167.jpg", "w": 933, "h": 1400, "mb": 2.0}, {"n": "4168", "f": "3Peso_4168.jpg", "w": 933, "h": 1400, "mb": 2.0}, {"n": "4169", "f": "3Peso_4169.jpg", "w": 933, "h": 1400, "mb": 2.0}, {"n": "4172", "f": "3Peso_4172.jpg", "w": 933, "h": 1400, "mb": 1.9}, {"n": "4174", "f": "3Peso_4174.jpg", "w": 933, "h": 1400, "mb": 1.8}, {"n": "4181", "f": "3Peso_4181.jpg", "w": 933, "h": 1400, "mb": 1.7}, {"n": "4183", "f": "3Peso_4183.jpg", "w": 933, "h": 1400, "mb": 1.9}]}, {"label": "Top rojo de cuello alto", "cara": "cara_12.jpg", "cara_de": "4204", "fotos": [{"n": "4204", "f": "3Peso_4204.jpg", "w": 933, "h": 1400, "mb": 2.2}, {"n": "4207", "f": "3Peso_4207.jpg", "w": 933, "h": 1400, "mb": 2.2}, {"n": "4208", "f": "3Peso_4208.jpg", "w": 933, "h": 1400, "mb": 2.4}, {"n": "4201", "f": "3Peso_4201.jpg", "w": 933, "h": 1400, "mb": 1.9}, {"n": "4202", "f": "3Peso_4202.jpg", "w": 933, "h": 1400, "mb": 1.9}, {"n": "4203", "f": "3Peso_4203.jpg", "w": 933, "h": 1400, "mb": 1.9}, {"n": "4205", "f": "3Peso_4205.jpg", "w": 933, "h": 1400, "mb": 2.2}, {"n": "4206", "f": "3Peso_4206.jpg", "w": 933, "h": 1400, "mb": 2.2}]}, {"label": "Top negro", "cara": "cara_13.jpg", "cara_de": "4209", "fotos": [{"n": "4209", "f": "3Peso_4209.jpg", "w": 933, "h": 1400, "mb": 2.3}, {"n": "4210", "f": "3Peso_4210.jpg", "w": 933, "h": 1400, "mb": 2.0}, {"n": "4211", "f": "3Peso_4211.jpg", "w": 933, "h": 1400, "mb": 2.2}]}, {"label": "Vestido rojo", "cara": "cara_14.jpg", "cara_de": null, "fotos": [{"n": "4212", "f": "3Peso_4212.jpg", "w": 933, "h": 1400, "mb": 2.6}, {"n": "4213", "f": "3Peso_4213.jpg", "w": 933, "h": 1400, "mb": 2.0}, {"n": "4214", "f": "3Peso_4214.jpg", "w": 933, "h": 1400, "mb": 2.1}]}, {"label": "Camisa a cuadros", "cara": "cara_15.jpg", "cara_de": "4218", "fotos": [{"n": "4218", "f": "3Peso_4218.jpg", "w": 933, "h": 1400, "mb": 2.3}, {"n": "4286", "f": "3Peso_4286.jpg", "w": 933, "h": 1400, "mb": 3.2}, {"n": "4287", "f": "3Peso_4287.jpg", "w": 933, "h": 1400, "mb": 3.2}, {"n": "4215", "f": "3Peso_4215.jpg", "w": 933, "h": 1400, "mb": 2.3}, {"n": "4216", "f": "3Peso_4216.jpg", "w": 933, "h": 1400, "mb": 2.3}, {"n": "4219", "f": "3Peso_4219.jpg", "w": 933, "h": 1400, "mb": 2.3}, {"n": "4289", "f": "3Peso_4289.jpg", "w": 933, "h": 1400, "mb": 3.1}]}, {"label": "Lentes y camisa marrón", "cara": "cara_16.jpg", "cara_de": "4220", "fotos": [{"n": "4220", "f": "3Peso_4220.jpg", "w": 933, "h": 1400, "mb": 1.6}, {"n": "4226", "f": "3Peso_4226.jpg", "w": 933, "h": 1400, "mb": 1.8}, {"n": "4221", "f": "3Peso_4221.jpg", "w": 933, "h": 1400, "mb": 1.6}, {"n": "4223", "f": "3Peso_4223.jpg", "w": 933, "h": 1400, "mb": 1.7}, {"n": "4224", "f": "3Peso_4224.jpg", "w": 933, "h": 1400, "mb": 1.7}, {"n": "4225", "f": "3Peso_4225.jpg", "w": 933, "h": 1400, "mb": 1.8}]}, {"label": "Camiseta estampada", "cara": "cara_17.jpg", "cara_de": "4227", "fotos": [{"n": "4227", "f": "3Peso_4227.jpg", "w": 933, "h": 1400, "mb": 2.1}, {"n": "4228", "f": "3Peso_4228.jpg", "w": 933, "h": 1400, "mb": 2.0}]}, {"label": "Chaqueta verde", "cara": "cara_18.jpg", "cara_de": "4231", "fotos": [{"n": "4230", "f": "3Peso_4230.jpg", "w": 933, "h": 1400, "mb": 2.0}, {"n": "4232", "f": "3Peso_4232.jpg", "w": 933, "h": 1400, "mb": 1.8}, {"n": "4229", "f": "3Peso_4229.jpg", "w": 933, "h": 1400, "mb": 2.0}, {"n": "4231", "f": "3Peso_4231.jpg", "w": 933, "h": 1400, "mb": 1.8}, {"n": "4233", "f": "3Peso_4233.jpg", "w": 933, "h": 1400, "mb": 1.7}, {"n": "4234", "f": "3Peso_4234.jpg", "w": 933, "h": 1400, "mb": 1.7}]}, {"label": "Gorra LIG", "cara": "cara_19.jpg", "cara_de": "4237", "fotos": [{"n": "4237", "f": "3Peso_4237.jpg", "w": 933, "h": 1400, "mb": 1.8}, {"n": "4235", "f": "3Peso_4235.jpg", "w": 933, "h": 1400, "mb": 1.8}, {"n": "4236", "f": "3Peso_4236.jpg", "w": 933, "h": 1400, "mb": 1.8}, {"n": "4238", "f": "3Peso_4238.jpg", "w": 933, "h": 1400, "mb": 1.8}]}, {"label": "Camiseta Valley Dream", "cara": "cara_20.jpg", "cara_de": "4249", "fotos": [{"n": "4249", "f": "3Peso_4249.jpg", "w": 933, "h": 1400, "mb": 2.1}, {"n": "4241", "f": "3Peso_4241.jpg", "w": 933, "h": 1400, "mb": 1.9}, {"n": "4252", "f": "3Peso_4252.jpg", "w": 933, "h": 1400, "mb": 1.9}, {"n": "4239", "f": "3Peso_4239.jpg", "w": 933, "h": 1400, "mb": 1.7}, {"n": "4240", "f": "3Peso_4240.jpg", "w": 933, "h": 1400, "mb": 1.7}, {"n": "4242", "f": "3Peso_4242.jpg", "w": 933, "h": 1400, "mb": 2.0}, {"n": "4243", "f": "3Peso_4243.jpg", "w": 933, "h": 1400, "mb": 2.0}, {"n": "4246", "f": "3Peso_4246.jpg", "w": 933, "h": 1400, "mb": 2.0}, {"n": "4247", "f": "3Peso_4247.jpg", "w": 933, "h": 1400, "mb": 1.9}, {"n": "4248", "f": "3Peso_4248.jpg", "w": 933, "h": 1400, "mb": 2.1}, {"n": "4250", "f": "3Peso_4250.jpg", "w": 933, "h": 1400, "mb": 2.0}, {"n": "4251", "f": "3Peso_4251.jpg", "w": 933, "h": 1400, "mb": 2.1}, {"n": "4253", "f": "3Peso_4253.jpg", "w": 933, "h": 1400, "mb": 1.7}]}], "grupo": [{"n": "4258", "f": "3Peso_4258.jpg", "w": 1400, "h": 933, "mb": 2.5}, {"n": "4283", "f": "3Peso_4283.jpg", "w": 933, "h": 1400, "mb": 2.9}, {"n": "4268", "f": "3Peso_4268.jpg", "w": 933, "h": 1400, "mb": 2.5}, {"n": "4284", "f": "3Peso_4284.jpg", "w": 933, "h": 1400, "mb": 2.9}, {"n": "4285", "f": "3Peso_4285.jpg", "w": 933, "h": 1400, "mb": 3.0}, {"n": "4255", "f": "3Peso_4255.jpg", "w": 1400, "h": 933, "mb": 2.2}, {"n": "4257", "f": "3Peso_4257.jpg", "w": 1400, "h": 933, "mb": 2.2}, {"n": "4259", "f": "3Peso_4259.jpg", "w": 1400, "h": 933, "mb": 2.5}, {"n": "4264", "f": "3Peso_4264.jpg", "w": 933, "h": 1400, "mb": 2.6}, {"n": "4269", "f": "3Peso_4269.jpg", "w": 933, "h": 1400, "mb": 2.4}, {"n": "4271", "f": "3Peso_4271.jpg", "w": 933, "h": 1400, "mb": 2.5}, {"n": "4096", "f": "3Peso_4096.jpg", "w": 933, "h": 1400, "mb": 1.9}, {"n": "4097", "f": "3Peso_4097.jpg", "w": 933, "h": 1400, "mb": 2.1}, {"n": "4094", "f": "3Peso_4094.jpg", "w": 933, "h": 1400, "mb": 2.1}, {"n": "4108", "f": "3Peso_4108.jpg", "w": 1400, "h": 933, "mb": 2.0}, {"n": "4110", "f": "3Peso_4110.jpg", "w": 1400, "h": 933, "mb": 2.1}, {"n": "4105", "f": "3Peso_4105.jpg", "w": 933, "h": 1400, "mb": 2.9}], "detras": [{"n": "4073", "f": "3Peso_4073.jpg", "w": 1400, "h": 933, "mb": 2.1}, {"n": "4068", "f": "3Peso_4068.jpg", "w": 1400, "h": 933, "mb": 3.1}, {"n": "4081", "f": "3Peso_4081.jpg", "w": 933, "h": 1400, "mb": 2.5}, {"n": "4104", "f": "3Peso_4104.jpg", "w": 933, "h": 1400, "mb": 2.5}, {"n": "4114", "f": "3Peso_4114.jpg", "w": 1400, "h": 933, "mb": 2.8}, {"n": "4153", "f": "3Peso_4153.jpg", "w": 933, "h": 1400, "mb": 2.3}, {"n": "4274", "f": "3Peso_4274.jpg", "w": 933, "h": 1400, "mb": 2.6}, {"n": "4277", "f": "3Peso_4277.jpg", "w": 933, "h": 1400, "mb": 2.4}, {"n": "4072", "f": "3Peso_4072.jpg", "w": 1400, "h": 933, "mb": 2.2}, {"n": "4074", "f": "3Peso_4074.jpg", "w": 1400, "h": 933, "mb": 2.2}, {"n": "4069", "f": "3Peso_4069.jpg", "w": 1400, "h": 933, "mb": 3.0}, {"n": "4079", "f": "3Peso_4079.jpg", "w": 933, "h": 1400, "mb": 2.9}, {"n": "4080", "f": "3Peso_4080.jpg", "w": 933, "h": 1400, "mb": 3.0}, {"n": "4092", "f": "3Peso_4092.jpg", "w": 933, "h": 1400, "mb": 1.7}, {"n": "4102", "f": "3Peso_4102.jpg", "w": 933, "h": 1400, "mb": 2.5}, {"n": "4103", "f": "3Peso_4103.jpg", "w": 933, "h": 1400, "mb": 2.6}, {"n": "4106", "f": "3Peso_4106.jpg", "w": 933, "h": 1400, "mb": 2.7}, {"n": "4107", "f": "3Peso_4107.jpg", "w": 933, "h": 1400, "mb": 2.9}, {"n": "4109", "f": "3Peso_4109.jpg", "w": 1400, "h": 933, "mb": 2.1}, {"n": "4111", "f": "3Peso_4111.jpg", "w": 1400, "h": 933, "mb": 2.3}, {"n": "4112", "f": "3Peso_4112.jpg", "w": 1400, "h": 933, "mb": 2.4}, {"n": "4113", "f": "3Peso_4113.jpg", "w": 1400, "h": 933, "mb": 2.4}, {"n": "4115", "f": "3Peso_4115.jpg", "w": 1400, "h": 933, "mb": 2.8}, {"n": "4145", "f": "3Peso_4145.jpg", "w": 933, "h": 1400, "mb": 2.3}, {"n": "4146", "f": "3Peso_4146.jpg", "w": 933, "h": 1400, "mb": 2.3}, {"n": "4147", "f": "3Peso_4147.jpg", "w": 933, "h": 1400, "mb": 2.2}, {"n": "4262", "f": "3Peso_4262.jpg", "w": 933, "h": 1400, "mb": 2.7}, {"n": "4263", "f": "3Peso_4263.jpg", "w": 933, "h": 1400, "mb": 2.7}, {"n": "4272", "f": "3Peso_4272.jpg", "w": 933, "h": 1400, "mb": 2.4}, {"n": "4273", "f": "3Peso_4273.jpg", "w": 933, "h": 1400, "mb": 2.7}, {"n": "4275", "f": "3Peso_4275.jpg", "w": 933, "h": 1400, "mb": 3.1}, {"n": "4278", "f": "3Peso_4278.jpg", "w": 933, "h": 1400, "mb": 2.3}, {"n": "4279", "f": "3Peso_4279.jpg", "w": 933, "h": 1400, "mb": 2.0}, {"n": "4280", "f": "3Peso_4280.jpg", "w": 933, "h": 1400, "mb": 2.0}, {"n": "4060", "f": "3Peso_4060.jpg", "w": 1400, "h": 933, "mb": 2.1}, {"n": "4062", "f": "3Peso_4062.jpg", "w": 1400, "h": 933, "mb": 2.3}, {"n": "4070", "f": "3Peso_4070.jpg", "w": 933, "h": 1400, "mb": 2.8}, {"n": "4071", "f": "3Peso_4071.jpg", "w": 933, "h": 1400, "mb": 2.8}]};
+const ORIGINAL = "https://arielplopez.github.io/fotos-sesion-3peso/fotos/";
+const CIRCULO = '<svg class="circulo" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" vector-effect="non-scaling-stroke" d="M64 5 C34 1 6 12 5 47 C4 80 27 97 52 96 C80 95 96 78 95 47 C94 17 73 5 42 8"/></svg>';
+const esIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
+const $ = (s, r = document) => r.querySelector(s);
+const el = (tag, cls, txt) => { const e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; };
+const fotosTxt = n => n === 1 ? "1 foto" : n + " fotos";
+
+/* ---------- Bajar el original (desde GitHub) ---------- */
+const cache = new Map();   // nombre -> Promise<Blob>
+function traer(f) {
+  if (!cache.has(f)) {
+    const p = fetch(ORIGINAL + f).then(r => { if (!r.ok) throw new Error(r.status); return r.blob(); });
+    p.catch(() => cache.delete(f));
+    cache.set(f, p);
+    while (cache.size > 6) cache.delete(cache.keys().next().value);   // no llenar la memoria del celular
+  }
+  return cache.get(f);
+}
+function soltar(blob, f) {
+  const u = URL.createObjectURL(blob);
+  const a = el("a"); a.href = u; a.download = f; document.body.append(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(u), 60000);
+}
+async function descargar(boton, f) {
+  if (boton.getAttribute("aria-busy") === "true") return;
+  const antes = boton.innerHTML;
+  boton.setAttribute("aria-busy", "true"); boton.textContent = "Bajando…";
+  try {
+    soltar(await traer(f), f);
+    boton.textContent = "Lista ✓";
+  } catch (e) {
+    window.open(ORIGINAL + f, "_blank", "noopener");
+    boton.textContent = "Abierta aparte";
+  }
+  setTimeout(() => { boton.innerHTML = antes; boton.removeAttribute("aria-busy"); }, 2200);
+}
+
+/* ---------- Un cuadro de película ---------- */
+function cuadro(p, lista, i, quien, mejor) {
+  const fig = el("figure", "cuadro" + (mejor ? " mejor" : ""));
+  const b = el("button", "foto");
+  b.setAttribute("aria-label", "Ver en grande la foto " + p.n + (quien ? " de " + quien : ""));
+  const img = el("img");
+  img.src = "mini/" + p.f; img.loading = "lazy"; img.decoding = "async"; img.alt = "";
+  img.width = p.w; img.height = p.h; img.style.setProperty("--r", p.w / p.h);
+  b.append(img);
+  b.addEventListener("click", () => abrir(lista, i));
+  fig.append(b);
+  if (mejor) { fig.insertAdjacentHTML("beforeend", CIRCULO); fig.append(el("span", "nota", "la mejor")); }
+  const cap = el("figcaption");
+  cap.append(el("span", "num", "▸ " + p.n));
+  const a = el("a", "bajar", "Descargar");
+  a.href = ORIGINAL + p.f; a.download = p.f;
+  a.addEventListener("click", e => { e.preventDefault(); descargar(a, p.f); });
+  cap.append(a); fig.append(cap);
+  return fig;
+}
+
+/* ---------- Armar la página ---------- */
+const main = $("#main");
+const total = DATOS.personas.reduce((s, p) => s + p.fotos.length, 0) + DATOS.grupo.length + DATOS.detras.length;
+$("#conteo").textContent = "Sesión de fotos · " + total + " fotos";
+
+const secR = el("section", "seccion"); secR.id = "retratos";
+const titR = el("div", "wrap seccion-tit");
+titR.append(el("h2", "grande", "Retratos"), el("span", "mono", DATOS.personas.length + " personas"));
+secR.append(titR); main.append(secR);
+
+DATOS.personas.forEach((per, k) => {
+  const id = "p-" + k;
+  // índice de caras
+  const li = el("li"); const a = el("a"); a.href = "#" + id; a.setAttribute("aria-label", "Ir a las fotos de " + per.label);
+  const im = el("img"); im.src = "caras/" + per.cara; im.alt = ""; im.width = 120; im.height = 120; im.loading = "eager";
+  a.append(im); li.append(a); $("#caras").append(li);
+  // tira
+  const art = el("article", "tira"); art.id = id;
+  const rot = el("div", "wrap rotulo");
+  rot.append(el("h3", null, per.label));
+  const info = el("span", "mono"); info.append(fotosTxt(per.fotos.length)); const d = el("span", "desliza", " · desliza →"); info.append(d);
+  rot.append(info);
+  const pel = el("div", "pelicula"); pel.tabIndex = 0; pel.setAttribute("aria-label", "Fotos de " + per.label);
+  const pista = el("div", "pista");
+  const lider = el("div", "lider"); lider.append(el("span", null, "3PESO ▸ SESIÓN")); pista.append(lider);
+  const lista = per.fotos.map(p => ({ ...p, quien: per.label }));
+  per.fotos.forEach((p, i) => pista.append(cuadro(p, lista, i, per.label, i === 0)));
+  pel.append(pista); art.append(rot, pel); secR.append(art);
+});
+
+function hoja(id, titulo, fotos, quien) {
+  const s = el("section", "seccion"); s.id = id;
+  const t = el("div", "wrap seccion-tit"); t.append(el("h2", "grande", titulo), el("span", "mono", fotosTxt(fotos.length)));
+  const w = el("div", "wrap"); const g = el("div", "hoja-contacto");
+  const lista = fotos.map(p => ({ ...p, quien }));
+  fotos.forEach((p, i) => g.append(cuadro(p, lista, i, null, false)));
+  w.append(g); s.append(t, w); main.append(s);
+  const a = el("a"); a.href = "#" + id; a.append(titulo); const n = el("span", null, fotos.length); a.append(n);
+  $("#atajos").append(a);
+}
+hoja("grupo", "En grupo", DATOS.grupo, "En grupo");
+hoja("detras", "Detrás de cámara", DATOS.detras, "Detrás de cámara");
+
+/* "desliza →" solo donde la tira no cabe */
+function medir() { document.querySelectorAll(".tira").forEach(t => { const p = $(".pelicula", t); t.classList.toggle("larga", p.scrollWidth > p.clientWidth + 4); }); }
+medir(); addEventListener("resize", medir); addEventListener("load", medir);
+
+/* círculo rojo: se dibuja cuando aparece */
+const ver = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("visto"); ver.unobserve(e.target); } }), { threshold: .5 });
+document.querySelectorAll(".cuadro.mejor").forEach(c => ver.observe(c));
+requestAnimationFrame(() => setTimeout(() => $("#titulo").classList.add("visto"), 250));
+
+/* ---------- Lupa ---------- */
+const lupa = $("#lupa"), lImg = $("#lImg"), lBajar = $("#lBajar"), lGuardar = $("#lGuardar"), lEstado = $("#lEstado");
+let lista = [], cur = 0, turno = 0, archivo = null, blobURL = null;
+
+function mostrar(i) {
+  cur = (i + lista.length) % lista.length;
+  const p = lista[cur], mio = ++turno;
+  archivo = null;
+  if (blobURL) { URL.revokeObjectURL(blobURL); blobURL = null; }
+  lImg.src = "web/" + p.f; lImg.alt = "Foto " + p.n;
+  $("#lNum").textContent = "▸ " + p.n + " · " + (cur + 1) + " de " + lista.length;
+  $("#lQuien").textContent = p.quien || "";
+  lBajar.href = ORIGINAL + p.f; lBajar.download = p.f;
+  lBajar.innerHTML = "Descargar <small>" + p.mb + " MB</small>";
+  lEstado.textContent = "Cargando la foto completa…";
+  lGuardar.disabled = true;
+  traer(p.f).then(b => {
+    if (mio !== turno) return;
+    blobURL = URL.createObjectURL(b); lImg.src = blobURL;
+    archivo = new File([b], p.f, { type: "image/jpeg" });
+    lGuardar.disabled = false;
+    lEstado.textContent = esIOS ? "Lista. Toca «Guardar en Fotos» o deja la foto presionada." : "Foto completa lista.";
+  }).catch(() => { if (mio === turno) lEstado.textContent = "No cargó la foto completa. «Descargar» la abre aparte."; });
+  // adelantar la siguiente
+  const sig = lista[(cur + 1) % lista.length]; if (sig) { const pre = new Image(); pre.src = "web/" + sig.f; }
+}
+function abrir(l, i) {
+  lista = l; mostrar(i);
+  const puedeCompartir = esIOS && navigator.canShare && navigator.canShare({ files: [new File([""], "x.jpg", { type: "image/jpeg" })] });
+  lGuardar.hidden = !puedeCompartir;
+  if (lupa.showModal) lupa.showModal(); else window.open(ORIGINAL + l[i].f, "_blank", "noopener");
+}
+lBajar.addEventListener("click", e => {
+  e.preventDefault();
+  const p = lista[cur];
+  if (archivo) soltar(archivo, p.f); else descargar(lBajar, p.f);
+});
+lGuardar.addEventListener("click", async () => {
+  if (!archivo) return;
+  try { await navigator.share({ files: [archivo] }); }
+  catch (e) { if (e.name !== "AbortError") soltar(archivo, archivo.name); }
+});
+$("#lCerrar").onclick = () => lupa.close();
+$("#lAntes").onclick = () => mostrar(cur - 1);
+$("#lDespues").onclick = () => mostrar(cur + 1);
+lupa.addEventListener("close", () => { turno++; if (blobURL) { URL.revokeObjectURL(blobURL); blobURL = null; } lImg.removeAttribute("src"); });
+lupa.addEventListener("keydown", e => { if (e.key === "ArrowLeft") mostrar(cur - 1); if (e.key === "ArrowRight") mostrar(cur + 1); });
+let x0 = null;
+lImg.addEventListener("touchstart", e => { x0 = e.touches[0].clientX; }, { passive: true });
+lImg.addEventListener("touchend", e => { if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; x0 = null; if (Math.abs(dx) > 50) mostrar(cur + (dx < 0 ? 1 : -1)); });
+</script>
+</body>
+</html>
