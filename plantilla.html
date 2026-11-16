@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fotos de la sesión · 3Peso</title>
+<meta name="description" content="Busca tu foto de la sesión de 3Peso y descárgala en calidad completa.">
+<meta property="og:title" content="Tus fotos de la sesión · 3Peso">
+<meta property="og:description" content="Busca tu foto y descárgala en calidad completa.">
+<meta property="og:image" content="https://arielplopez.github.io/fotos-sesion-3peso/web/3Peso_04258.jpg">
+<meta name="robots" content="noindex">
+<style>
+  :root {
+    --bg: #0c0c0d; --panel: #161618; --line: #26262a; --text: #f4f4f5;
+    --muted: #a1a1aa; --accent: #ffd23f; --accent-ink: #111;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+  header { padding: 32px 0 8px; }
+  header img.logo { height: 40px; width: auto; display: block; margin-bottom: 20px; }
+  h1 { font-size: clamp(28px, 6vw, 44px); line-height: 1.1; margin: 0 0 10px; letter-spacing: -0.02em; }
+  .lead { color: var(--muted); margin: 0 0 18px; max-width: 46ch; }
+  .tips { display: grid; gap: 8px; grid-template-columns: 1fr 1fr; margin-bottom: 8px; }
+  .tip { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; font-size: 14px; color: var(--muted); }
+  .tip b { color: var(--text); display: block; font-size: 13px; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 2px; }
+  nav.chips {
+    position: sticky; top: 0; z-index: 5; background: rgba(12,12,13,.92);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line); margin-top: 16px;
+  }
+  nav.chips .wrap { display: flex; gap: 8px; padding-top: 10px; padding-bottom: 10px; overflow-x: auto; }
+  nav.chips a {
+    flex: none; color: var(--text); text-decoration: none; font-size: 14px; font-weight: 600;
+    border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; background: var(--panel);
+  }
+  nav.chips a span { color: var(--muted); font-weight: 400; margin-left: 4px; }
+  section { padding-top: 28px; scroll-margin-top: 56px; }
+  h2 { font-size: 22px; margin: 0 0 4px; }
+  .sub { color: var(--muted); font-size: 14px; margin: 0 0 16px; }
+  .person { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 14px; margin-bottom: 14px; }
+  .person h3 { font-size: 16px; margin: 0 0 10px; display: flex; justify-content: space-between; gap: 8px; }
+  .person h3 small { color: var(--muted); font-weight: 400; font-size: 13px; }
+  .grid { display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); align-items: start; }
+  .grid.wide { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+  figure { margin: 0; }
+  figure button.ph {
+    display: block; width: 100%; padding: 0; border: 0; background: #222; border-radius: 10px;
+    overflow: hidden; cursor: zoom-in;
+  }
+  figure img { display: block; width: 100%; height: auto; }
+  a.dl {
+    display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 6px;
+    background: var(--accent); color: var(--accent-ink); text-decoration: none; font-weight: 700;
+    font-size: 14px; border-radius: 10px; padding: 9px 10px; min-height: 40px;
+  }
+  a.dl small { font-weight: 500; opacity: .7; }
+  footer { color: var(--muted); font-size: 13px; padding: 36px 0 48px; text-align: center; }
+
+  dialog#viewer {
+    width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0;
+    border: 0; background: #000; color: var(--text);
+  }
+  dialog#viewer::backdrop { background: #000; }
+  .v-body { position: absolute; inset: 0; display: flex; flex-direction: column; }
+  .v-img { flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; padding: 8px; }
+  .v-img img { max-width: 100%; max-height: 100%; object-fit: contain; -webkit-touch-callout: default; }
+  .v-bar {
+    display: flex; gap: 8px; align-items: center; padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+    background: #0c0c0d; border-top: 1px solid var(--line);
+  }
+  .v-bar button {
+    background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: 10px;
+    min-width: 44px; min-height: 44px; font-size: 20px; cursor: pointer;
+  }
+  .v-bar a.dl { flex: 1; margin: 0; min-height: 44px; }
+  .v-close { position: absolute; top: calc(10px + env(safe-area-inset-top)); right: 10px; z-index: 2;
+    background: rgba(0,0,0,.6); color: #fff; border: 1px solid #333; border-radius: 999px; width: 44px; height: 44px; font-size: 22px; cursor: pointer; }
+  .v-hint { position: absolute; top: calc(16px + env(safe-area-inset-top)); left: 12px; right: 64px; font-size: 13px; color: #bbb; }
+  @media (max-width: 520px) {
+    .tips { grid-template-columns: 1fr; }
+    .grid { grid-template-columns: repeat(2, 1fr); }
+    .grid.wide { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<header class="wrap">
+  <img class="logo" src="logo.png" alt="3Peso" width="78" height="40">
+  <h1>Tus fotos de la sesión</h1>
+  <p class="lead">Busca tus fotos y descárgalas en calidad completa. Toca cualquier foto para verla en grande.</p>
+  <div class="tips">
+    <div class="tip"><b>iPhone</b>Abre la foto, déjala presionada y elige «Guardar en Fotos».</div>
+    <div class="tip"><b>Android y computadora</b>Toca el botón amarillo «Descargar».</div>
+  </div>
+</header>
+
+<nav class="chips" aria-label="Secciones"><div class="wrap" id="chips"></div></nav>
+
+<main class="wrap" id="main"></main>
+
+<footer class="wrap">3Peso · Fotos de la sesión</footer>
+
+<dialog id="viewer" aria-label="Foto en grande">
+  <div class="v-body">
+    <div class="v-hint" id="vHint"></div>
+    <button class="v-close" id="vClose" aria-label="Cerrar">✕</button>
+    <div class="v-img"><img id="vImg" alt=""></div>
+    <div class="v-bar">
+      <button id="vPrev" aria-label="Foto anterior">‹</button>
+      <a class="dl" id="vDl" download>Descargar</a>
+      <button id="vNext" aria-label="Foto siguiente">›</button>
+    </div>
+  </div>
+</dialog>
+
+<script>
+const DATA = __DATA__;
+
+const main = document.getElementById("main");
+const chips = document.getElementById("chips");
+const all = [];   // every photo in page order, for the viewer
+
+function photo(p, label) {
+  const i = all.push({ ...p, label }) - 1;
+  const fig = document.createElement("figure");
+  const btn = document.createElement("button");
+  btn.className = "ph";
+  btn.setAttribute("aria-label", "Ver foto en grande");
+  const img = document.createElement("img");
+  img.src = "web/" + p.f; img.width = p.w; img.height = p.h;
+  img.loading = "lazy"; img.decoding = "async"; img.alt = label;
+  btn.append(img);
+  btn.addEventListener("click", () => openViewer(i));
+  const a = document.createElement("a");
+  a.className = "dl"; a.href = "fotos/" + p.f; a.download = p.f;
+  a.innerHTML = "Descargar <small>" + p.mb + " MB</small>";
+  fig.append(btn, a);
+  return fig;
+}
+
+function section(id, title, sub, count) {
+  const s = document.createElement("section");
+  s.id = id;
+  s.innerHTML = "<h2></h2><p class='sub'></p>";
+  s.querySelector("h2").textContent = title;
+  s.querySelector(".sub").textContent = sub;
+  main.append(s);
+  const c = document.createElement("a");
+  c.href = "#" + id; c.textContent = title;
+  const n = document.createElement("span"); n.textContent = count;
+  c.append(n); chips.append(c);
+  return s;
+}
+
+const sR = section("retratos", "Retratos", "Busca tu ropa o tu cara. Cada quien tiene sus mejores fotos.", DATA.personas.length + " personas");
+for (const [label, fotos] of DATA.personas) {
+  const card = document.createElement("div");
+  card.className = "person";
+  const h = document.createElement("h3");
+  h.textContent = label;
+  const sm = document.createElement("small");
+  sm.textContent = fotos.length === 1 ? "1 foto" : fotos.length + " fotos";
+  h.append(sm);
+  const g = document.createElement("div"); g.className = "grid";
+  for (const p of fotos) g.append(photo(p, label));
+  card.append(h, g); sR.append(card);
+}
+
+const sG = section("grupo", "En grupo", "Fotos con más de una persona.", DATA.grupo.length);
+const gG = document.createElement("div"); gG.className = "grid wide";
+for (const p of DATA.grupo) gG.append(photo(p, "En grupo"));
+sG.append(gG);
+
+const sD = section("detras", "Detrás de cámara", "Momentos de la grabación.", DATA.detras.length);
+const gD = document.createElement("div"); gD.className = "grid wide";
+for (const p of DATA.detras) gD.append(photo(p, "Detrás de cámara"));
+sD.append(gD);
+
+// ---- Viewer ----
+const dlg = document.getElementById("viewer");
+const vImg = document.getElementById("vImg");
+const vDl = document.getElementById("vDl");
+const vHint = document.getElementById("vHint");
+let cur = 0, loadToken = 0;
+
+function show(i) {
+  cur = (i + all.length) % all.length;
+  const p = all[cur];
+  const token = ++loadToken;
+  vImg.src = "web/" + p.f;           // fast preview first
+  vImg.alt = p.label;
+  const full = new Image();          // then swap to full quality so long-press saves the original
+  full.onload = () => { if (token === loadToken) vImg.src = full.src; };
+  full.src = "fotos/" + p.f;
+  vDl.href = "fotos/" + p.f; vDl.download = p.f;
+  vDl.innerHTML = "Descargar <small>" + p.mb + " MB</small>";
+  vHint.textContent = p.label + " · " + (cur + 1) + " de " + all.length;
+}
+function openViewer(i) {
+  show(i);
+  if (typeof dlg.showModal === "function") dlg.showModal();
+  else window.open("fotos/" + all[i].f, "_blank");
+}
+document.getElementById("vClose").onclick = () => dlg.close();
+document.getElementById("vPrev").onclick = () => show(cur - 1);
+document.getElementById("vNext").onclick = () => show(cur + 1);
+dlg.addEventListener("keydown", e => {
+  if (e.key === "ArrowLeft") show(cur - 1);
+  if (e.key === "ArrowRight") show(cur + 1);
+});
+let x0 = null;
+vImg.addEventListener("touchstart", e => { x0 = e.touches[0].clientX; }, { passive: true });
+vImg.addEventListener("touchend", e => {
+  if (x0 === null) return;
+  const dx = e.changedTouches[0].clientX - x0; x0 = null;
+  if (Math.abs(dx) > 50) show(cur + (dx < 0 ? 1 : -1));
+});
+</script>
+</body>
+</html>
